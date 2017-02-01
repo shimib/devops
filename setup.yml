@@ -7,4 +7,4 @@
   - name: clone petclinic repo
     git: repo=https://github.com/shimib/spring-petclinic.git dest=/home/ec2-user/petclinic
   - name: clone devops repo
-    git: repo=https://github.com/shimib/devops.git dest=/home/ec2-user/devops
+    git: repo=https://github.com/shimib/devops.git dest=/home/ec2-user/devops update=no
