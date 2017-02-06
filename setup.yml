@@ -8,3 +8,15 @@
     git: repo=https://github.com/shimib/spring-petclinic.git dest=/home/ec2-user/petclinic
   - name: clone devops repo
     git: repo=https://github.com/shimib/devops.git dest=/home/ec2-user/devops update=no
+  - name: install docker
+    become: yes
+    become_method: sudo
+    yum: name=docker state=latest
+  - name: add group docker to ec2-user
+    become: yes
+    become_method: sudo
+    user: name=ec2-user groups=docker append=yes
+  - name: start docker service
+    become: yes
+    become_method: sudo
+    service: name=docker state=started
