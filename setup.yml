@@ -22,3 +22,10 @@
     service: name=docker state=started
   - name: download and unziptar maven
     unarchive: dest=/home/ec2-user src=http://apache.mivzakim.net/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz copy=no creates=/home/ec2-user/apache-maven-3.3.9
+  - name: add M2_HOME to .bashrc
+    lineinfile: dest=/home/ec2-user/.bashrc line="export M2_HOME=/home/ec2-user/apache-maven-3.3.9" 
+  - name: add M2 to .bashrc
+    lineinfile: dest=/home/ec2-user/.bashrc line="export M2=$M2_HOME/bin" 
+  - name: add M2 to PATH in .bashrc
+    lineinfile: dest=/home/ec2-user/.bashrc line="export PATH=$M2:$PATH"
+
